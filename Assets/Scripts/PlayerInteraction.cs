@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerInteraction : MonoBehaviour
 {
     public GameObject currentInterObj = null;
     public InteractionObject currentInterObjScript = null;
+    public TMP_Text interactMessage;
 
     void Update()
     {
@@ -32,6 +33,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentInterObj = other.gameObject;
             currentInterObjScript = currentInterObj.GetComponent<InteractionObject>();
+            interactMessage.gameObject.SetActive(true);
         }
     }
 
@@ -40,7 +42,7 @@ public class PlayerInteraction : MonoBehaviour
         if (other.CompareTag("InteractObject") == true)
         {
             currentInterObj = null;
-
+            interactMessage.gameObject.SetActive(false);
         }
     }
 }

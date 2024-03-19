@@ -4,13 +4,18 @@ using UnityEngine;
 using TMPro;
 public class PlayerInteraction : MonoBehaviour
 {
-    public GameObject currentInterObj = null;
+
+    [Header("Current object the character is colliding with")]
+    public GameObject currentInterObject = null;
     public InteractionObject currentInterObjScript = null;
+
+
+    [Header("Fading Text")]
     public TMP_Text interactMessage;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && currentInterObj == true)
+        if (Input.GetKeyDown(KeyCode.Space) && currentInterObject == true)
         {
             if (currentInterObjScript.info == true)
             {
@@ -31,8 +36,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (other.CompareTag("InteractObject") == true)
         {
-            currentInterObj = other.gameObject;
-            currentInterObjScript = currentInterObj.GetComponent<InteractionObject>();
+            currentInterObject = other.gameObject;
+            currentInterObjScript = currentInterObject.GetComponent<InteractionObject>();
             interactMessage.gameObject.SetActive(true);
         }
     }
@@ -41,7 +46,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (other.CompareTag("InteractObject") == true)
         {
-            currentInterObj = null;
+            currentInterObject = null;
             interactMessage.gameObject.SetActive(false);
         }
     }

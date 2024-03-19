@@ -7,7 +7,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Current object the character is colliding with")]
     public GameObject currentInterObj = null;
-    public InteractionObject currentInterObjScript = null;
+    public InteractionObject currentObjScript = null;
 
 
     [Header("Player interact prompt")]
@@ -18,14 +18,14 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && currentInterObj == true)
         {
-            if (currentInterObjScript.info == true)
+            if (currentObjScript.info == true)
             {
-                currentInterObjScript.Info();
+                currentObjScript.Info();
             }
 
-            if (currentInterObjScript.pickup == true)
+            if (currentObjScript.pickup == true)
             {
-                currentInterObjScript.Pickup();
+                currentObjScript.Pickup();
             }
 
         }
@@ -39,7 +39,7 @@ public class PlayerInteraction : MonoBehaviour
         if (other.CompareTag("InteractObject") == true)
         {
             currentInterObj = other.gameObject;
-            currentInterObjScript = currentInterObj.GetComponent<InteractionObject>();
+            currentObjScript = currentInterObj.GetComponent<InteractionObject>();
             interactMessage.gameObject.SetActive(true);
         }
     }

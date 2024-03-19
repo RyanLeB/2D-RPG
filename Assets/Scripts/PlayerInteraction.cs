@@ -6,16 +6,17 @@ public class PlayerInteraction : MonoBehaviour
 {
 
     [Header("Current object the character is colliding with")]
-    public GameObject currentInterObject = null;
+    public GameObject currentInterObj = null;
     public InteractionObject currentInterObjScript = null;
 
 
-    [Header("Fading Text")]
+    [Header("Player interact prompt")]
     public TMP_Text interactMessage;
 
+    // Looks for key press on update
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && currentInterObject == true)
+        if (Input.GetKeyDown(KeyCode.Space) && currentInterObj == true)
         {
             if (currentInterObjScript.info == true)
             {
@@ -31,13 +32,14 @@ public class PlayerInteraction : MonoBehaviour
             
     }
 
+    // Trigger methods
 
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("InteractObject") == true)
         {
-            currentInterObject = other.gameObject;
-            currentInterObjScript = currentInterObject.GetComponent<InteractionObject>();
+            currentInterObj = other.gameObject;
+            currentInterObjScript = currentInterObj.GetComponent<InteractionObject>();
             interactMessage.gameObject.SetActive(true);
         }
     }
@@ -46,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (other.CompareTag("InteractObject") == true)
         {
-            currentInterObject = null;
+            currentInterObj = null;
             interactMessage.gameObject.SetActive(false);
         }
     }

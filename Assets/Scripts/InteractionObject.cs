@@ -52,15 +52,6 @@ public class InteractionObject : MonoBehaviour
     
 
 
-    IEnumerator ShowInfo(string message, float secondsDelay)
-    {
-        infoText.text = message;
-        
-        yield return new WaitForSeconds(secondsDelay);
-        infoText.text = null;
-
-    }
-
     IEnumerator FadeText()
     {
         if (infoText == null)

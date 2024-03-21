@@ -15,6 +15,11 @@ public class InteractionObject : MonoBehaviour
 
     [Header("Pickups")]
     public bool pickup;
+
+
+    [Header("Dialogue")]
+    public bool talking;
+    public string[] dialogueLines;
     
     public void Start()
     {
@@ -49,8 +54,12 @@ public class InteractionObject : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    
 
+    public void Dialogue()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogueLines);
+        
+    }
 
     IEnumerator FadeText()
     {

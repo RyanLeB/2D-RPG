@@ -28,6 +28,10 @@ public class PlayerInteraction : MonoBehaviour
                 currentObjScript.Pickup();
             }
 
+            if (currentObjScript.talking == true)
+            {
+                currentObjScript.Dialogue();
+            }
         }
             
     }

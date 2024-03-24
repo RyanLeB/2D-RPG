@@ -3,3 +3,5 @@ References
 [Image/Sprite] Kenny asset pack: potion, sword sprite https://kenney.nl/assets/tiny-dungeon 
 
 [Image/Sprite] Portal sprite: https://elthen.itch.io/2d-pixel-art-portal-sprites
+
+[Image/Sprite] Blacksmith sprite: https://pixivan.itch.io/traders-top-down-npc

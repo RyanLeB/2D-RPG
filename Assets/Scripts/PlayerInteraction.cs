@@ -5,6 +5,8 @@ using TMPro;
 public class PlayerInteraction : MonoBehaviour
 {
 
+
+
     [Header("Current object the character is colliding with")]
     public GameObject currentInterObj = null;
     public InteractionObject currentObjScript = null;
@@ -16,7 +18,13 @@ public class PlayerInteraction : MonoBehaviour
     // Looks for key press on update
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && currentInterObj == true)
+
+        DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
+        if (dialogueManager.dialogueUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
+        {
+            dialogueManager.DisplayNextSentence();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && currentInterObj == true)
         {
             if (currentObjScript.info == true)
             {

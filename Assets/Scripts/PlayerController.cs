@@ -12,13 +12,39 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
     public LevelManager _levelManager;
     public string sceneName;
+    public Inventory Inventory;
+    public static PlayerController Instance;
 
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            Inventory = new Inventory();
+        }
+        else
+        {
+            Debug.LogError("More than one instance of PlayerController found!");
+            Destroy(this.gameObject);
+        }
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         _levelManager = FindObjectOfType<LevelManager>();
+        
+    }
+
+    void Start()
+    {
+        Inventory = GetComponent<Inventory>();
+        
+
+        
+        if (Inventory == null)
+        {
+            Debug.LogError("Inventory component not found on PlayerController.");
+        }
     }
 
     void Update()

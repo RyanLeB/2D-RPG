@@ -25,7 +25,7 @@ public class QuestManager : MonoBehaviour
             if (quest.CheckCompletionCondition(FindObjectOfType<PlayerController>()))
             {
                 quest.IsCompleted = true;
-                quest.GetComponent<InteractionObject>().dialogueLines[0] = "You have completed the quest! Here is the stone I promised you!";
+                quest.GetComponent<InteractionObject>().dialogueLines[0] = "You have completed the quest! Here is a stone to help you on your journey!";
                 UpdateQuestText();
             }
         }

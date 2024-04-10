@@ -103,8 +103,15 @@ public class InteractionObject : MonoBehaviour
         else if (quest != null && quest.IsGiven && !quest.IsCompleted && quest.CheckCompletionCondition(FindObjectOfType<PlayerController>()))
         {
             
-            dialogueLines[0] = "Thank you so much! Here's that stone I promised you.";
+            dialogueLines[0] = "Thank you so much! Here's a Stone to help you on your journey!";
             quest.IsCompleted = true;
+
+            if (quest is PotionQuest)
+            {
+                playerInventory.RemoveAllItems();
+            }
+            Debug.Log("Current potion count: " + playerInventory.CountPotions());
+
             FindObjectOfType<PlayerController>().Inventory.AddItem(item: new Item { itemType = "Stone" });
             currentDialogueLine = 0;
             questManager.UpdateQuestText();

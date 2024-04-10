@@ -24,6 +24,7 @@ public class Inventory : MonoBehaviour
                 // Add a potion to the inventory'
                 items.Add(item);
                 Debug.Log("Potion Type");
+                Debug.Log("Current potion count: " + CountPotions());
                 break;
 
             case "Stone":
@@ -67,6 +68,45 @@ public class Inventory : MonoBehaviour
                         text.DOFade(1, 1).OnComplete(() => text.DOFade(0, 1));
                     }
 
+                    else
+                    {
+                        Debug.LogError("Parent game object not found");
+                    }
+
+
+                }
+                
+                if (CountStones() == 5)
+                {
+                    // Find the parent game object for the second portal
+                    GameObject parentObject = GameObject.Find("Portal");
+                    if (parentObject != null)
+                    {
+                        // Find the child game object and activate it
+                        Transform childObject = parentObject.transform.Find("GoodPortal");
+                        if (childObject != null)
+                        {
+                            childObject.gameObject.SetActive(true);
+
+                            // Play the sound
+                            AudioSource audioSource = childObject.GetComponent<AudioSource>();
+                            if (audioSource != null)
+                            {
+                                audioSource.Play();
+                            }
+                        }
+                        else
+                        {
+                            Debug.LogError("Child game object not found");
+                        }
+
+                        // Show the text
+                        TextMeshProUGUI text = GameObject.Find("PortalText").GetComponent<TextMeshProUGUI>();
+                        if (text != null)
+                        {
+                            text.DOFade(1, 1).OnComplete(() => text.DOFade(0, 1));
+                        }
+                    }
                     else
                     {
                         Debug.LogError("Parent game object not found");
@@ -118,7 +158,10 @@ public class Inventory : MonoBehaviour
     {
         items.Remove(item);
     }
-
+    public void RemoveAllItems()
+    {
+        items.RemoveAll(item => item.itemType == "Potion");
+    }
     public bool ContainsItem(Item item)
     {
         return items.Contains(item);

@@ -12,7 +12,7 @@ public class InteractionObject : MonoBehaviour
     public bool info;
     public string message;
     public TextMeshPro infoText;
-
+    public string interactionType;
 
     [Header("Pickups")]
     public bool pickup;
@@ -46,6 +46,18 @@ public class InteractionObject : MonoBehaviour
         else
         {
             Debug.LogError("infoText is not assigned!");
+        }
+
+        if (interactionType == "WeaponInfo")
+        {
+            // Add a weapon to the player's inventory
+            FindObjectOfType<PlayerController>().Inventory.AddItem(new Item { itemType = "Weapon" });
+        }
+
+        if (interactionType == "StatueInteract")
+        {
+            // Add a weapon to the player's inventory
+            FindObjectOfType<PlayerController>().Inventory.AddItem(new Item { itemType = "Statue" });
         }
     }
 
@@ -95,7 +107,8 @@ public class InteractionObject : MonoBehaviour
             quest.IsCompleted = true;
             FindObjectOfType<PlayerController>().Inventory.AddItem(item: new Item { itemType = "Stone" });
             currentDialogueLine = 0;
-            
+            questManager.UpdateQuestText();
+
         }
         else if (quest != null && quest.IsGiven && !quest.IsCompleted)
         {

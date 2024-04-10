@@ -5,11 +5,11 @@ using TMPro;
 public class PlayerInteraction : MonoBehaviour
 {
 
-
-
     [Header("Current object the character is colliding with")]
     public GameObject currentInterObj = null;
     public InteractionObject currentObjScript = null;
+
+
 
 
     [Header("Player interact prompt")]

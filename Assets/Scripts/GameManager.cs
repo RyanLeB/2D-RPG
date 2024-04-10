@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         
         // Pause game 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameState == GameState.Gameplay) 
             {

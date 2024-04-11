@@ -139,7 +139,8 @@ public class GameManager : MonoBehaviour
         _uiManager.UIGameWin();
         winScreen.SetActive(true);
         Cursor.visible = true;
-        
+        player.SetActive(false);
+
     }
     public void GameOver()
     {

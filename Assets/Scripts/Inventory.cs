@@ -27,6 +27,20 @@ public class Inventory : MonoBehaviour
                 Debug.Log("Current potion count: " + CountPotions());
                 break;
 
+            case "Debris":
+                // Add a potion to the inventory'
+                items.Add(item);
+                Debug.Log("Debris Type");
+                Debug.Log("Current Debris count: " + CountDebris());
+                break;
+
+            case "Soul":
+                // Add a potion to the inventory'
+                items.Add(item);
+                Debug.Log("Soul Type");
+                Debug.Log("Current Soul count: " + CountSouls());
+                break;
+
             case "Stone":
                 // Add a stone to the inventory
                 items.Add(item);
@@ -148,6 +162,16 @@ public class Inventory : MonoBehaviour
     public int CountPotions()
     {
         return items.Count(i => i.itemType == "Potion");
+    }
+
+    public int CountDebris()
+    {
+        return items.Count(i => i.itemType == "Debris");
+    }
+
+    public int CountSouls()
+    {
+        return items.Count(i => i.itemType == "Soul");
     }
     public int CountStatue()
     {
